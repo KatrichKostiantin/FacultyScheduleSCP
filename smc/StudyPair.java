@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudyPair {
-    private List<Student> students;
-    private Teacher teacher;
-    private Discipline.Lesson lesson;
+    private List<NodeStudent> students;
+    private NodeTeacher teacher;
+    private NodeLesson lesson;
 
     public StudyPair() {
         this.students = new ArrayList<>();
@@ -21,27 +21,27 @@ public class StudyPair {
         this.lesson = studyPair.lesson;
     }
 
-    public List<Student> getStudents() {
+    public List<NodeStudent> getStudents() {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
+    public void setStudents(List<NodeStudent> students) {
         this.students = students;
     }
 
-    public Teacher getTeacher() {
+    public NodeTeacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
+    public void setTeacher(NodeTeacher teacher) {
         this.teacher = teacher;
     }
 
-    public Discipline.Lesson getLesson() {
+    public NodeLesson getLesson() {
         return lesson;
     }
 
-    public void setLesson(Discipline.Lesson lesson) {
+    public void setLesson(NodeLesson lesson) {
         this.lesson = lesson;
     }
 }

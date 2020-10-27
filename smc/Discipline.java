@@ -20,8 +20,8 @@ public class Discipline {
         this.numLectionPerWeek = numLectionPerWeek;
         this.numPracticePerWeek = numPracticePerWeek;
         lessons = new ArrayList<>(numLectionPerWeek + numPracticePerWeek);
-        while (numLectionPerWeek-- > 0) lessons.add(new LectureLesson(Id));
-        while (numPracticePerWeek-- > 0) lessons.add(new PracticeLesson(Id));
+        while (numLectionPerWeek-- > 0) lessons.add(new LectureLesson(this));
+        while (numPracticePerWeek-- > 0) lessons.add(new PracticeLesson(this));
     }
 
     @Override
@@ -39,14 +39,14 @@ public class Discipline {
 
     abstract static class Lesson {
         private TypeLesson typeLesson;
-        private int disciplineId;
+        private  Discipline discipline;
 
-        public int getDisciplineId() {
-            return disciplineId;
+        public Lesson(Discipline discipline) {
+            this.discipline = discipline;
         }
 
-        public Lesson(int disciplineId) {
-            this.disciplineId = disciplineId;
+        public Discipline getDiscipline() {
+            return discipline;
         }
 
         abstract TypeLesson getTypeLesson();
@@ -56,19 +56,19 @@ public class Discipline {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Lesson lesson = (Lesson) o;
-            return disciplineId == lesson.disciplineId &&
+            return discipline.getId() == lesson.discipline.getId() &&
                     typeLesson == lesson.typeLesson;
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(typeLesson, disciplineId);
+            return Objects.hash(typeLesson, discipline.getId());
         }
     }
 
     class PracticeLesson extends Lesson {
-        PracticeLesson(int disciplineId) {
-            super(disciplineId);
+        PracticeLesson(Discipline discipline) {
+            super(discipline);
         }
 
         @Override
@@ -78,8 +78,8 @@ public class Discipline {
     }
 
     class LectureLesson extends Lesson {
-		LectureLesson(int disciplineId) {
-			super( disciplineId);
+		LectureLesson(Discipline discipline) {
+			super( discipline);
 		}
 
         @Override

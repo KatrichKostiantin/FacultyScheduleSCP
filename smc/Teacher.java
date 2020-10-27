@@ -2,34 +2,33 @@ import java.util.List;
 import java.util.Objects;
 
 public class Teacher {
-	private final int Id;
-	private static int freeId = 0;
-
-    public int getId() {
-		return Id;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Teacher teacher = (Teacher) o;
-		return Id == teacher.Id;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(Id);
-	}
-
-	private String name;
+    private static int freeId = 0;
+    private final int Id;
+    private String name;
     private List<Discipline> lectureDisciplines, practiceDisciplines;
 
     public Teacher(String name, List<Discipline> lectureDisciplines, List<Discipline> practiceDisciplines) {
-		Id = freeId++;
+        Id = freeId++;
         this.name = name;
         this.lectureDisciplines = lectureDisciplines;
         this.practiceDisciplines = practiceDisciplines;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Teacher teacher = (Teacher) o;
+        return Id == teacher.Id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Id);
     }
 
     public List<Discipline> getLectureDisciplines() {
