@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class NodeTeacher extends NodeTemplate{
+public class NodeTeacher extends NodeTemplate implements Comparable<NodeTeacher>{
     private static ArrayList<Teacher> allPossibleValues;
     /* Может надо будет через id реализовать equals, но вроде сслыками нормально будет хз
 	private final int Id;
@@ -72,5 +72,10 @@ public class NodeTeacher extends NodeTemplate{
 
     public void setSubstitutedValue(Teacher substitutedValue) {
         this.substitutedValue = substitutedValue;
+    }
+
+    @Override
+    public int compareTo(NodeTeacher o) {
+        return 0;
     }
 }

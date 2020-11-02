@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class NodeLesson extends NodeTemplate{
+public class NodeLesson extends NodeTemplate implements Comparable<NodeLesson>{
  /* Может надо будет через id реализовать equals, но вроде сслыками нормально будет хз
 	private final int Id;
 	private static int freeId = 0; */
@@ -35,5 +35,10 @@ public class NodeLesson extends NodeTemplate{
 
         connectionNodeStudents.get(0).startChecking();
 
+    }
+
+    @Override
+    public int compareTo(NodeLesson o) {
+        return 0;
     }
 }
